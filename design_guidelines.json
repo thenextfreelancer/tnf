@@ -1,0 +1,144 @@
+{
+  "theme": "dark",
+  "archetype": "4",
+  "archetype_name": "Swiss & High-Contrast",
+  "design_philosophy": "A premium, developer-focused marketing site blending Swiss Brutalist typography with high-tech terminal aesthetics. The design uses stark contrasts, visible structural grids, and technical precision to establish authority in the AI freelancing space for developers.",
+  "colors": {
+    "background": {
+      "default": "#0A0A0A",
+      "card": "#121212",
+      "glass": "rgba(10, 10, 10, 0.65)"
+    },
+    "foreground": {
+      "default": "#FFFFFF",
+      "muted": "#A1A1AA",
+      "inverse": "#0A0A0A"
+    },
+    "primary": {
+      "default": "#FFFFFF",
+      "foreground": "#0A0A0A",
+      "hover": "#E4E4E7"
+    },
+    "accent": {
+      "default": "#FF3366",
+      "foreground": "#FFFFFF",
+      "hover": "#E62E5C"
+    },
+    "border": {
+      "default": "#27272A",
+      "subtle": "#18181B",
+      "glow": "rgba(255, 51, 102, 0.3)"
+    }
+  },
+  "typography": {
+    "font_families": {
+      "heading": "Cabinet Grotesk, sans-serif",
+      "body": "Work Sans, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-none",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-tight",
+      "h4": "text-lg sm:text-xl font-medium tracking-tight",
+      "body": "text-base font-normal leading-relaxed text-foreground/80",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em] font-mono text-accent-default"
+    },
+    "anti_patterns": [
+      "No generic 'Inter' for headings",
+      "Avoid centered text blocks for body paragraphs; use left-aligned for technical precision",
+      "Never use default bold for every header; use black/heavy weights for H1 and regular/medium for H3/H4"
+    ]
+  },
+  "spacing_and_layout": {
+    "philosophy": "Generous Spacing + Visible Grids (The Control Room & Tech Grid).",
+    "scale": {
+      "section_y": "py-24 md:py-32",
+      "component_gap": "gap-8 md:gap-12",
+      "card_padding": "p-6 md:p-8"
+    },
+    "grid_patterns": {
+      "bento_hero": "grid-cols-1 md:grid-cols-12 gap-8",
+      "tools_directory": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6",
+      "articles": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    }
+  },
+  "surface_strategies": {
+    "navbar": "Glassmorphism: backdrop-blur-xl bg-[#0A0A0A]/70 border-b border-white/10. Sticky top-0 z-50.",
+    "cards": "Grid Borders & Neumorphic Tech: bg-[#121212] border border-[#27272A]. Hover states include a subtle -translate-y-1 and a glow effect shadow-[0_0_15px_rgba(255,255,255,0.05)].",
+    "feature_sections": "Visible grid lines (border-collapse style) exposing the skeleton of the UI.",
+    "buttons": "Brutalist Sharp: rounded-none or max rounded-sm. Solid white for primary, 1px border for secondary with transparent background."
+  },
+  "components": {
+    "icons": {
+      "library": "@phosphor-icons/react",
+      "instructions": "Use Phosphor Icons (duotone or regular weight) for a technical, precise look. Fallback to lucide-react if needed."
+    },
+    "interactive": {
+      "buttons": "Use clear hover transitions: `transition-all duration-300 hover:bg-white hover:text-black` for outline, `hover:bg-gray-200` for primary.",
+      "inputs": "Shadcn standard but customized: bg-[#0A0A0A] border-[#27272A] focus:border-white focus:ring-1 focus:ring-white rounded-sm.",
+      "badges": "Font-mono text-xs border border-[#27272A] bg-[#121212] text-foreground/70 px-2 py-1 uppercase tracking-wider."
+    },
+    "animations": {
+      "scroll": "Use Lenis for smooth momentum scrolling.",
+      "reveals": "Framer Motion: Fade up and slight scale-up (y: 20, opacity: 0 -> y: 0, opacity: 1) staggered across grids.",
+      "micro_interactions": "The 'Tracing Beam' effect for the Tools Directory cards (glowing border on hover)."
+    },
+    "data_testid_convention": "kebab-case, role-based (e.g., `data-testid=\"hero-cta-button\"`, `data-testid=\"newsletter-submit\"`)"
+  },
+  "media_and_images": {
+    "guidelines": "Images must be dark-themed, architectural, or technical. Overlays MUST be used if placing text over images (e.g., bg-gradient-to-t from-[#0A0A0A] to-transparent). Max height on mobile: 80vh.",
+    "urls": {
+      "hero_background": {
+        "url": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGNvZGUlMjBkYXRhfGVufDB8fHx8MTc3NTU4NzQ1OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract code/data screen, use as low-opacity background behind the main hero text with a heavy gradient fade to #0A0A0A.",
+        "category": "hero"
+      },
+      "about_section": {
+        "url": "https://images.unsplash.com/photo-1520583457224-aee11bad5112?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjBkYXJrJTIwZGVza3xlbnwwfHx8fDE3NzU1ODc0NTl8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Developer setup with open MacBook in dark environment. Use for the 'About' or 'Who is this for' section.",
+        "category": "about"
+      },
+      "ai_freelancing_guide": {
+        "url": "https://images.unsplash.com/photo-1598789858997-66ad403aa8e1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwd29ya3NwYWNlJTIwZGFya3xlbnwwfHx8fDE3NzU1ODc0NzZ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Minimalist dark workspace lamp. Good conceptual image for 'Guidance' or 'Learning'.",
+        "category": "feature"
+      },
+      "blog_placeholder": {
+        "url": "https://images.unsplash.com/photo-1754548930550-be9fa88874f4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwzfHxkZXZlbG9wZXIlMjBkYXJrJTIwZGVza3xlbnwwfHx8fDE3NzU1ODc0NTl8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Coder's workspace filled with code and keyboards. Use as the featured image for the main blog post card.",
+        "category": "blog"
+      },
+      "tools_directory_bg": {
+        "url": "https://images.unsplash.com/photo-1550438496-8c6e269e7886?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGNvZGUlMjBkYXRhfGVufDB8fHx8MTc3NTU4NzQ1OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Multicolored code snippet. Use softly behind the tools directory header.",
+        "category": "background"
+      },
+      "newsletter_bg": {
+        "url": "https://images.pexels.com/photos/4506940/pexels-photo-4506940.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Modern dark workspace with laptop and microphone. Perfect for the newsletter/community opt-in section.",
+        "category": "newsletter"
+      },
+      "sponsors": [
+        {
+          "url": "https://images.unsplash.com/photo-1764344815160-0e2afc6939a0?crop=entropy&cs=srgb&fm=jpg",
+          "description": "Sponsor logo 1"
+        },
+        {
+          "url": "https://images.pexels.com/photos/9973170/pexels-photo-9973170.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "description": "Sponsor logo 2"
+        }
+      ]
+    }
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the dark theme colors provided. DO NOT introduce arbitrary gradients or colors like 'SaaS Blue' or 'Teal'.",
+    "Use pure HTML/Tailwind for marketing layout structures to allow for asymmetry, and Shadcn ONLY for interactive elements (forms, select, inputs).",
+    "Never use `Inter` for headings. Install and use `Cabinet Grotesk` (via Google Fonts or local font-face) for Headings, and `JetBrains Mono` for code snippets and overlines.",
+    "Buttons should have sharp or slightly rounded edges (rounded-sm maximum), giving a Brutalist/Technical feel.",
+    "Implement the 'Grid Borders' pattern for the Tools Directory—showing a 1px border (#27272A) on the right and bottom of the grid items to create a seamless grid look.",
+    "Use the provided image URLs exclusively. Never use placeholder services like via.placeholder.com.",
+    "Implement `data-testid` on all buttons, links, and forms for testing.",
+    "Ensure all text against images has proper accessibility via a dark overlay gradient (`bg-black/60` minimum opacity)."
+  ]
+}
