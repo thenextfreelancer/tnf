@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Rounded square background matching dark theme -->
+  <rect width="512" height="512" fill="#0A0A0A" rx="90"/>
+  
+  <!-- Modern "T/F" monogram for TheNextFreelancer -->
+  <g fill="#FF3366">
+    <!-- Bold T letter -->
+    <rect x="140" y="150" width="232" height="55"/>
+    <rect x="230" y="150" width="55" height="280"/>
+    
+    <!-- Forward slash / -->
+    <rect x="245" y="200" width="45" height="230" rx="8" transform="rotate(15 267 315)"/>
+    
+    <!-- Minimalist accent element -->
+    <circle cx="340" cy="340" r="18"/>
+  </g>
+</svg>

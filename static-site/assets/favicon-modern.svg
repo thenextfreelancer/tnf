@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0A0A0A" rx="80"/>
+  
+  <!-- Modern geometric logo -->
+  <g fill="#FF3366">
+    <!-- Letter T with modern styling -->
+    <path d="M 150 180 L 362 180 L 362 230 L 286 230 L 286 420 L 226 420 L 226 230 L 150 230 Z"/>
+    
+    <!-- Forward slash integrated -->
+    <rect x="260" y="220" width="40" height="200" rx="20"/>
+    
+    <!-- Small accent dot -->
+    <circle cx="340" cy="360" r="20"/>
+  </g>
+</svg>
