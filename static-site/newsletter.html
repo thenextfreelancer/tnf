@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter | TheNextFreelancer</title>
+    <meta name="description" content="Subscribe to TheNextFreelancer newsletter for weekly AI insights, freelancing tips, and the latest tool updates.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'obsidian': '#0A0A0A',
+                        'card-dark': '#121212',
+                        'border-default': '#27272A',
+                        'border-subtle': '#18181B',
+                        'signal-red': '#FF3366',
+                        'signal-red-hover': '#E62E5C',
+                        'foreground-muted': '#A1A1AA'
+                    },
+                    fontFamily: {
+                        'cabinet': ['Cabinet Grotesk', 'sans-serif'],
+                        'work': ['Work Sans', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-obsidian text-white font-work antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-obsidian/70 border-b border-white/10" data-testid="main-navigation">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-cabinet text-xl font-bold tracking-tight" data-testid="logo-link">
+                    TheNext<span class="text-signal-red">Freelancer</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-about">About</a>
+                    <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-blog">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-guide">Guide</a>
+                    <a href="/tools.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-tools">Tools</a>
+                </div>
+                
+                <button class="md:hidden" id="mobile-menu-btn" data-testid="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+                <div class="flex flex-col gap-4">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors">About</a>
+                    <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors">Guide</a>
+                    <a href="/tools.html" class="text-sm hover:text-signal-red transition-colors">Tools</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden min-h-screen flex items-center" data-testid="newsletter-hero">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.pexels.com/photos/4506940/pexels-photo-4506940.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+                 alt="Newsletter background" 
+                 class="w-full h-full object-cover opacity-10" 
+                 loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/80 to-obsidian"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-6">NEWSLETTER</p>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-cabinet tracking-tighter leading-none mb-6">
+                Stay Ahead of the AI Curve
+            </h1>
+            <p class="text-base sm:text-lg leading-relaxed text-foreground-muted max-w-2xl mx-auto mb-12">
+                Get weekly insights on AI models, freelancing strategies, tool updates, and industry trends delivered directly to your inbox.
+            </p>
+            
+            <!-- Newsletter Form (Connect to your email service) -->
+            <div class="max-w-md mx-auto">
+                <div class="bg-card-dark border border-border-default p-8">
+                    <form id="newsletter-form" class="space-y-4" data-testid="newsletter-form">
+                        <div>
+                            <label for="email" class="sr-only">Email address</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Enter your email" 
+                                required
+                                class="w-full px-4 py-3 bg-obsidian border border-border-default text-white rounded-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white"
+                                data-testid="newsletter-email-input"
+                            >
+                        </div>
+                        <button 
+                            type="submit" 
+                            class="w-full px-8 py-3 bg-white text-obsidian font-medium rounded-sm hover:bg-gray-200 transition-all duration-300"
+                            data-testid="newsletter-submit-button"
+                        >
+                            Subscribe Now
+                        </button>
+                    </form>
+                    <p class="text-xs text-foreground-muted mt-4 text-center">
+                        Join 10,000+ developers. Unsubscribe anytime.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- What You'll Get -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-card-dark border border-border-default p-6">
+                    <div class="w-10 h-10 bg-signal-red/10 border border-signal-red/20 rounded-sm flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-signal-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold font-cabinet mb-2">AI Model Updates</h3>
+                    <p class="text-sm text-foreground-muted">Latest releases, benchmarks, and practical use cases</p>
+                </div>
+                
+                <div class="bg-card-dark border border-border-default p-6">
+                    <div class="w-10 h-10 bg-signal-red/10 border border-signal-red/20 rounded-sm flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-signal-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold font-cabinet mb-2">Freelancing Tips</h3>
+                    <p class="text-sm text-foreground-muted">Strategies, pricing guides, and client acquisition tactics</p>
+                </div>
+                
+                <div class="bg-card-dark border border-border-default p-6">
+                    <div class="w-10 h-10 bg-signal-red/10 border border-signal-red/20 rounded-sm flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-signal-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold font-cabinet mb-2">Tool Reviews</h3>
+                    <p class="text-sm text-foreground-muted">In-depth reviews of new AI tools and platforms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-16 border-t border-border-subtle" data-testid="footer">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="font-cabinet text-xl font-bold tracking-tight mb-4">
+                        TheNext<span class="text-signal-red">Freelancer</span>
+                    </div>
+                    <p class="text-sm text-foreground-muted leading-relaxed max-w-md">
+                        Empowering developers to build successful freelance careers using AI.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="/about.html" class="hover:text-signal-red transition-colors">About</a></li>
+                        <li><a href="/blog.html" class="hover:text-signal-red transition-colors">Blog</a></li>
+                        <li><a href="/ai-freelancing-guide.html" class="hover:text-signal-red transition-colors">AI Guide</a></li>
+                        <li><a href="/tools.html" class="hover:text-signal-red transition-colors">Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Connect</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="#" class="hover:text-signal-red transition-colors">Twitter</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">GitHub</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-foreground-muted">
+                    © 2026 TheNextFreelancer. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm text-foreground-muted">
+                    <a href="#" class="hover:text-signal-red transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-signal-red transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // Newsletter form handling (connect to your email service API)
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // TODO: Connect to your email service (Mailchimp, ConvertKit, etc.)
+            console.log('Newsletter signup:', email);
+            
+            // Show success message
+            alert('Thank you for subscribing! Check your email for confirmation.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

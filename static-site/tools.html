@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Directory | TheNextFreelancer</title>
+    <meta name="description" content="Curated directory of the best AI tools for freelance developers. Code assistants, LLMs, design tools, and automation platforms.">
+    <meta name="keywords" content="AI tools, developer tools, GPT, Claude, GitHub Copilot, AI directory">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Tools Directory | TheNextFreelancer">
+    <meta property="og:description" content="Curated directory of AI tools for developers.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'obsidian': '#0A0A0A',
+                        'card-dark': '#121212',
+                        'border-default': '#27272A',
+                        'border-subtle': '#18181B',
+                        'signal-red': '#FF3366',
+                        'signal-red-hover': '#E62E5C',
+                        'foreground-muted': '#A1A1AA'
+                    },
+                    fontFamily: {
+                        'cabinet': ['Cabinet Grotesk', 'sans-serif'],
+                        'work': ['Work Sans', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-obsidian text-white font-work antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-obsidian/70 border-b border-white/10" data-testid="main-navigation">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-cabinet text-xl font-bold tracking-tight" data-testid="logo-link">
+                    TheNext<span class="text-signal-red">Freelancer</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-about">About</a>
+                    <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-blog">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-guide">Guide</a>
+                    <a href="/tools.html" class="text-sm text-signal-red transition-colors" data-testid="nav-tools">Tools</a>
+                </div>
+                
+                <button class="md:hidden" id="mobile-menu-btn" data-testid="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+                <div class="flex flex-col gap-4">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors">About</a>
+                    <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors">Guide</a>
+                    <a href="/tools.html" class="text-sm text-signal-red transition-colors">Tools</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden" data-testid="tools-hero">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1550438496-8c6e269e7886?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200" 
+                 alt="AI Tools Background" 
+                 class="w-full h-full object-cover opacity-10" 
+                 loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/80 to-obsidian"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-6">TOOLS DIRECTORY</p>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-cabinet tracking-tighter leading-none mb-6">
+                Essential AI Tools for Freelancers
+            </h1>
+            <p class="text-base sm:text-lg leading-relaxed text-foreground-muted max-w-3xl">
+                Curated collection of AI tools to 10x your development workflow. Code assistants, LLMs, design tools, and automation platforms.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Filter Section -->
+    <section class="py-8 border-t border-border-subtle" data-testid="tools-filters">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap gap-3">
+                <button class="px-4 py-2 bg-white text-obsidian font-medium rounded-sm text-sm" data-testid="filter-all">All</button>
+                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-code">Code Assistants</button>
+                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-llm">LLMs</button>
+                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-design">Design</button>
+                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-automation">Automation</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tools Grid -->
+    <section class="py-16 md:py-24" data-testid="tools-grid-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- Tool Card 1 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-1">
+                    <div class="font-mono text-xs text-signal-red mb-3">CODE ASSISTANT</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">GitHub Copilot</h3>
+                    <p class="text-sm text-foreground-muted mb-4">AI pair programmer that suggests entire lines and functions</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">$10/mo</span>
+                        <a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 2 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-2">
+                    <div class="font-mono text-xs text-signal-red mb-3">CODE ASSISTANT</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Cursor IDE</h3>
+                    <p class="text-sm text-foreground-muted mb-4">AI-native code editor with GPT-5 integration</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">$20/mo</span>
+                        <a href="https://cursor.sh" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 3 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-3">
+                    <div class="font-mono text-xs text-signal-red mb-3">LLM</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">GPT-5.2</h3>
+                    <p class="text-sm text-foreground-muted mb-4">OpenAI's most advanced reasoning model</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">API</span>
+                        <a href="https://openai.com" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 4 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-4">
+                    <div class="font-mono text-xs text-signal-red mb-3">LLM</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Claude Sonnet 4.5</h3>
+                    <p class="text-sm text-foreground-muted mb-4">Anthropic's long-context specialist model</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">API</span>
+                        <a href="https://anthropic.com" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 5 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-5">
+                    <div class="font-mono text-xs text-signal-red mb-3">LLM</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Gemini 3 Pro</h3>
+                    <p class="text-sm text-foreground-muted mb-4">Google's multimodal AI with native image understanding</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">API</span>
+                        <a href="https://deepmind.google/gemini" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 6 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-6">
+                    <div class="font-mono text-xs text-signal-red mb-3">LLM</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Llama 4 Scout</h3>
+                    <p class="text-sm text-foreground-muted mb-4">Meta's open-weights model with 10M context</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">Free/Local</span>
+                        <a href="https://llama.meta.com" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 7 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-7">
+                    <div class="font-mono text-xs text-signal-red mb-3">DESIGN</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Midjourney v7</h3>
+                    <p class="text-sm text-foreground-muted mb-4">State-of-the-art AI image generation</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">$30/mo</span>
+                        <a href="https://midjourney.com" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 8 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-8">
+                    <div class="font-mono text-xs text-signal-red mb-3">DESIGN</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">DALL-E 4</h3>
+                    <p class="text-sm text-foreground-muted mb-4">OpenAI's image generation API</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">API</span>
+                        <a href="https://openai.com/dall-e" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 9 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-9">
+                    <div class="font-mono text-xs text-signal-red mb-3">DESIGN</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Figma AI</h3>
+                    <p class="text-sm text-foreground-muted mb-4">AI-powered design automation and generation</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">$15/mo</span>
+                        <a href="https://figma.com" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 10 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-10">
+                    <div class="font-mono text-xs text-signal-red mb-3">AUTOMATION</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Make (Integromat)</h3>
+                    <p class="text-sm text-foreground-muted mb-4">Visual workflow automation with AI integrations</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">$9/mo</span>
+                        <a href="https://make.com" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 11 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-11">
+                    <div class="font-mono text-xs text-signal-red mb-3">AUTOMATION</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Zapier AI</h3>
+                    <p class="text-sm text-foreground-muted mb-4">Connect 5000+ apps with AI automation</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">$20/mo</span>
+                        <a href="https://zapier.com" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 12 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-12">
+                    <div class="font-mono text-xs text-signal-red mb-3">CODE ASSISTANT</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Tabnine</h3>
+                    <p class="text-sm text-foreground-muted mb-4">AI code completion for your IDE</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">$12/mo</span>
+                        <a href="https://tabnine.com" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 13 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-13">
+                    <div class="font-mono text-xs text-signal-red mb-3">CONTENT</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Copy.ai</h3>
+                    <p class="text-sm text-foreground-muted mb-4">AI copywriting for marketing and content</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">$49/mo</span>
+                        <a href="https://copy.ai" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 14 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-14">
+                    <div class="font-mono text-xs text-signal-red mb-3">DATA</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Pinecone</h3>
+                    <p class="text-sm text-foreground-muted mb-4">Vector database for AI applications</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">Free tier</span>
+                        <a href="https://pinecone.io" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 15 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-15">
+                    <div class="font-mono text-xs text-signal-red mb-3">DATA</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">LangChain</h3>
+                    <p class="text-sm text-foreground-muted mb-4">Framework for developing LLM applications</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">Open Source</span>
+                        <a href="https://langchain.com" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 16 -->
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-16">
+                    <div class="font-mono text-xs text-signal-red mb-3">VIDEO</div>
+                    <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Sora 2</h3>
+                    <p class="text-sm text-foreground-muted mb-4">OpenAI's text-to-video generation model</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-foreground-muted">API</span>
+                        <a href="https://openai.com/sora" target="_blank" rel="noopener" class="text-xs text-signal-red hover:underline">Visit →</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-24 md:py-32 border-t border-border-subtle" data-testid="cta-section">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="bg-card-dark border border-border-default p-12 md:p-16">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-cabinet tracking-tight leading-tight mb-6">
+                    Want to Learn How to Use These Tools?
+                </h2>
+                <p class="text-base leading-relaxed text-foreground-muted mb-8 max-w-2xl mx-auto">
+                    Read our comprehensive AI freelancing guide to master these tools and build a successful career.
+                </p>
+                <a href="/ai-freelancing-guide.html" class="px-8 py-4 bg-white text-obsidian font-medium rounded-sm hover:bg-gray-200 transition-all duration-300 inline-block" data-testid="cta-guide-button">
+                    Read the Guide
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-16 border-t border-border-subtle" data-testid="footer">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="font-cabinet text-xl font-bold tracking-tight mb-4">
+                        TheNext<span class="text-signal-red">Freelancer</span>
+                    </div>
+                    <p class="text-sm text-foreground-muted leading-relaxed max-w-md">
+                        Empowering developers to build successful freelance careers using AI.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="/about.html" class="hover:text-signal-red transition-colors">About</a></li>
+                        <li><a href="/blog.html" class="hover:text-signal-red transition-colors">Blog</a></li>
+                        <li><a href="/ai-freelancing-guide.html" class="hover:text-signal-red transition-colors">AI Guide</a></li>
+                        <li><a href="/tools.html" class="hover:text-signal-red transition-colors">Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Connect</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="#" class="hover:text-signal-red transition-colors">Twitter</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">GitHub</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-foreground-muted">
+                    © 2026 TheNextFreelancer. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm text-foreground-muted">
+                    <a href="#" class="hover:text-signal-red transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-signal-red transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

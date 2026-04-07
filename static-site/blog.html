@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | TheNextFreelancer - AI Freelancing Insights</title>
+    <meta name="description" content="Read expert insights on AI-powered freelancing, latest AI model updates, machine learning tutorials, and developer career advice.">
+    <meta name="keywords" content="AI freelancing blog, developer blog, machine learning, AI models, freelance career">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Blog | TheNextFreelancer">
+    <meta property="og:description" content="Expert insights on AI-powered freelancing for developers.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'obsidian': '#0A0A0A',
+                        'card-dark': '#121212',
+                        'border-default': '#27272A',
+                        'border-subtle': '#18181B',
+                        'signal-red': '#FF3366',
+                        'signal-red-hover': '#E62E5C',
+                        'foreground-muted': '#A1A1AA'
+                    },
+                    fontFamily: {
+                        'cabinet': ['Cabinet Grotesk', 'sans-serif'],
+                        'work': ['Work Sans', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-obsidian text-white font-work antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-obsidian/70 border-b border-white/10" data-testid="main-navigation">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-cabinet text-xl font-bold tracking-tight" data-testid="logo-link">
+                    TheNext<span class="text-signal-red">Freelancer</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-about">About</a>
+                    <a href="/blog.html" class="text-sm text-signal-red transition-colors" data-testid="nav-blog">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-guide">Guide</a>
+                    <a href="/tools.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-tools">Tools</a>
+                </div>
+                
+                <button class="md:hidden" id="mobile-menu-btn" data-testid="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+                <div class="flex flex-col gap-4">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors">About</a>
+                    <a href="/blog.html" class="text-sm text-signal-red transition-colors">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors">Guide</a>
+                    <a href="/tools.html" class="text-sm hover:text-signal-red transition-colors">Tools</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 md:pt-40 md:pb-24" data-testid="blog-hero">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-6">BLOG</p>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-cabinet tracking-tighter leading-none mb-6">
+                Insights on AI & Freelancing
+            </h1>
+            <p class="text-base sm:text-lg leading-relaxed text-foreground-muted max-w-3xl">
+                Latest updates on AI models, machine learning, freelancing strategies, and technical insights for modern developers.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Filter Section -->
+    <section class="py-8 border-t border-border-subtle" data-testid="blog-filters">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap gap-3">
+                <button class="px-4 py-2 bg-white text-obsidian font-medium rounded-sm text-sm" data-testid="filter-all">All</button>
+                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-ai-models">AI Models</button>
+                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-freelancing">Freelancing</button>
+                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-machine-learning">Machine Learning</button>
+                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-tutorials">Tutorials</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Articles Grid -->
+    <section class="py-16 md:py-24" data-testid="blog-articles-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Article 1 -->
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="blog-article-1">
+                    <img src="https://images.unsplash.com/photo-1754548930550-be9fa88874f4?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" 
+                         alt="Llama AI Models" 
+                         class="w-full h-48 object-cover" 
+                         loading="lazy">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider">AI MODELS</span>
+                            <span class="text-xs text-foreground-muted">Apr 6, 2026</span>
+                            <span class="text-xs text-foreground-muted">• 5 min</span>
+                        </div>
+                        <h3 class="text-xl font-semibold font-cabinet tracking-tight mb-3 hover:text-signal-red transition-colors">
+                            <a href="/blog-post.html?id=llama-update">Update on Llama Family of AI Models From Meta</a>
+                        </h3>
+                        <p class="text-sm text-foreground-muted leading-relaxed mb-4">
+                            Llama 4 brings native multimodal capabilities. Learn about Scout, Maverick, and Behemoth models, and Meta's shift from open-source to proprietary AI.
+                        </p>
+                        <a href="/blog-post.html?id=llama-update" class="text-sm text-signal-red hover:underline">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="blog-article-2">
+                    <img src="https://images.unsplash.com/photo-1598789858997-66ad403aa8e1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" 
+                         alt="AI Freelancing Guide" 
+                         class="w-full h-48 object-cover" 
+                         loading="lazy">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider">FREELANCING</span>
+                            <span class="text-xs text-foreground-muted">Apr 5, 2026</span>
+                            <span class="text-xs text-foreground-muted">• 8 min</span>
+                        </div>
+                        <h3 class="text-xl font-semibold font-cabinet tracking-tight mb-3 hover:text-signal-red transition-colors">
+                            <a href="/blog-post.html?id=getting-started">Getting Started with AI-Powered Freelancing in 2026</a>
+                        </h3>
+                        <p class="text-sm text-foreground-muted leading-relaxed mb-4">
+                            A comprehensive roadmap for developers transitioning to freelancing. Learn tools, pricing strategies, and how to position yourself.
+                        </p>
+                        <a href="/blog-post.html?id=getting-started" class="text-sm text-signal-red hover:underline">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="blog-article-3">
+                    <img src="https://images.unsplash.com/photo-1550438496-8c6e269e7886?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" 
+                         alt="Frontier AI Models Research" 
+                         class="w-full h-48 object-cover" 
+                         loading="lazy">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider">RESEARCH</span>
+                            <span class="text-xs text-foreground-muted">Apr 4, 2026</span>
+                            <span class="text-xs text-foreground-muted">• 12 min</span>
+                        </div>
+                        <h3 class="text-xl font-semibold font-cabinet tracking-tight mb-3 hover:text-signal-red transition-colors">
+                            <a href="/blog-post.html?id=frontier-models">Research Report on Frontier AI Models (Apr 2026)</a>
+                        </h3>
+                        <p class="text-sm text-foreground-muted leading-relaxed mb-4">
+                            Comprehensive analysis of GPT-5.2, Claude Sonnet 4.5, Gemini 3, and other frontier models. Performance benchmarks and use cases.
+                        </p>
+                        <a href="/blog-post.html?id=frontier-models" class="text-sm text-signal-red hover:underline">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 4 -->
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="blog-article-4">
+                    <img src="https://images.unsplash.com/photo-1520583457224-aee11bad5112?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" 
+                         alt="Machine Learning Course" 
+                         class="w-full h-48 object-cover" 
+                         loading="lazy">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider">MACHINE LEARNING</span>
+                            <span class="text-xs text-foreground-muted">Apr 3, 2026</span>
+                            <span class="text-xs text-foreground-muted">• 10 min</span>
+                        </div>
+                        <h3 class="text-xl font-semibold font-cabinet tracking-tight mb-3 hover:text-signal-red transition-colors">
+                            <a href="/blog-post.html?id=ml-course">Complete Machine Learning Course Index</a>
+                        </h3>
+                        <p class="text-sm text-foreground-muted leading-relaxed mb-4">
+                            Comprehensive curriculum covering supervised learning, neural networks, NLP, and deployment strategies for freelancers.
+                        </p>
+                        <a href="/blog-post.html?id=ml-course" class="text-sm text-signal-red hover:underline">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 5 -->
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="blog-article-5">
+                    <img src="https://images.unsplash.com/photo-1598789858997-66ad403aa8e1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" 
+                         alt="Improving LLM Accuracy" 
+                         class="w-full h-48 object-cover" 
+                         loading="lazy">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider">TUTORIALS</span>
+                            <span class="text-xs text-foreground-muted">Apr 2, 2026</span>
+                            <span class="text-xs text-foreground-muted">• 7 min</span>
+                        </div>
+                        <h3 class="text-xl font-semibold font-cabinet tracking-tight mb-3 hover:text-signal-red transition-colors">
+                            <a href="/blog-post.html?id=llm-accuracy">Improving Accuracy of LLM Applications</a>
+                        </h3>
+                        <p class="text-sm text-foreground-muted leading-relaxed mb-4">
+                            Practical techniques for improving LLM outputs using prompt engineering, fine-tuning, and RAG (Retrieval-Augmented Generation).
+                        </p>
+                        <a href="/blog-post.html?id=llm-accuracy" class="text-sm text-signal-red hover:underline">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 6 -->
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="blog-article-6">
+                    <img src="https://images.unsplash.com/photo-1550438496-8c6e269e7886?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" 
+                         alt="Python for AI" 
+                         class="w-full h-48 object-cover" 
+                         loading="lazy">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider">TUTORIALS</span>
+                            <span class="text-xs text-foreground-muted">Apr 1, 2026</span>
+                            <span class="text-xs text-foreground-muted">• 15 min</span>
+                        </div>
+                        <h3 class="text-xl font-semibold font-cabinet tracking-tight mb-3 hover:text-signal-red transition-colors">
+                            <a href="/blog-post.html?id=python-ai">Python for AI: Complete Course Index</a>
+                        </h3>
+                        <p class="text-sm text-foreground-muted leading-relaxed mb-4">
+                            Master Python fundamentals and advanced concepts needed for AI and machine learning development. Includes hands-on projects.
+                        </p>
+                        <a href="/blog-post.html?id=python-ai" class="text-sm text-signal-red hover:underline">Read More →</a>
+                    </div>
+                </article>
+                
+            </div>
+            
+            <!-- Pagination -->
+            <div class="mt-16 flex items-center justify-center gap-4" data-testid="blog-pagination">
+                <button class="px-4 py-2 border border-border-default text-foreground-muted rounded-sm text-sm hover:bg-white/10 transition-all" disabled>← Previous</button>
+                <div class="flex gap-2">
+                    <button class="px-4 py-2 bg-white text-obsidian rounded-sm text-sm">1</button>
+                    <button class="px-4 py-2 border border-border-default text-white rounded-sm text-sm hover:bg-white/10 transition-all">2</button>
+                    <button class="px-4 py-2 border border-border-default text-white rounded-sm text-sm hover:bg-white/10 transition-all">3</button>
+                </div>
+                <button class="px-4 py-2 border border-border-default text-white rounded-sm text-sm hover:bg-white/10 transition-all">Next →</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-16 border-t border-border-subtle" data-testid="footer">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="font-cabinet text-xl font-bold tracking-tight mb-4">
+                        TheNext<span class="text-signal-red">Freelancer</span>
+                    </div>
+                    <p class="text-sm text-foreground-muted leading-relaxed max-w-md">
+                        Empowering developers to build successful freelance careers using AI.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="/about.html" class="hover:text-signal-red transition-colors">About</a></li>
+                        <li><a href="/blog.html" class="hover:text-signal-red transition-colors">Blog</a></li>
+                        <li><a href="/ai-freelancing-guide.html" class="hover:text-signal-red transition-colors">AI Guide</a></li>
+                        <li><a href="/tools.html" class="hover:text-signal-red transition-colors">Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Connect</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="#" class="hover:text-signal-red transition-colors">Twitter</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">GitHub</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-foreground-muted">
+                    © 2026 TheNextFreelancer. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm text-foreground-muted">
+                    <a href="#" class="hover:text-signal-red transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-signal-red transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

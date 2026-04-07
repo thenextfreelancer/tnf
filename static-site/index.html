@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheNextFreelancer | AI-Powered Freelancing for Developers</title>
+    <meta name="description" content="Learn AI-powered freelancing and build sustainable income as a developer. Expert guides, tools, and insights for software engineers transitioning to freelancing.">
+    <meta name="keywords" content="AI freelancing, developer freelancing, AI tools, software engineer, tech freelancing, machine learning">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="TheNextFreelancer | AI-Powered Freelancing for Developers">
+    <meta property="og:description" content="Learn AI-powered freelancing and build sustainable income as a developer.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenextfreelancer.com">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TheNextFreelancer | AI-Powered Freelancing">
+    <meta name="twitter:description" content="Learn AI-powered freelancing and build sustainable income as a developer.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'obsidian': '#0A0A0A',
+                        'card-dark': '#121212',
+                        'border-default': '#27272A',
+                        'border-subtle': '#18181B',
+                        'signal-red': '#FF3366',
+                        'signal-red-hover': '#E62E5C',
+                        'foreground-muted': '#A1A1AA'
+                    },
+                    fontFamily: {
+                        'cabinet': ['Cabinet Grotesk', 'sans-serif'],
+                        'work': ['Work Sans', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Schema.org Organization Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "TheNextFreelancer",
+        "url": "https://thenextfreelancer.com",
+        "logo": "https://thenextfreelancer.com/assets/logo.png",
+        "description": "Learn AI-powered freelancing for developers",
+        "sameAs": [
+            "https://twitter.com/thenextfreelancer",
+            "https://linkedin.com/company/thenextfreelancer"
+        ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-obsidian text-white font-work antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-obsidian/70 border-b border-white/10" data-testid="main-navigation">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-cabinet text-xl font-bold tracking-tight" data-testid="logo-link">
+                    TheNext<span class="text-signal-red">Freelancer</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-about">About</a>
+                    <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-blog">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-guide">Guide</a>
+                    <a href="/tools.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-tools">Tools</a>
+                </div>
+                
+                <button class="md:hidden" id="mobile-menu-btn" data-testid="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+                <div class="flex flex-col gap-4">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors">About</a>
+                    <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors">Guide</a>
+                    <a href="/tools.html" class="text-sm hover:text-signal-red transition-colors">Tools</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden" data-testid="hero-section">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGNvZGUlMjBkYXRhfGVufDB8fHx8MTc3NTU4NzQ1OXww&ixlib=rb-4.1.0&q=85" 
+                 alt="Abstract code background" 
+                 class="w-full h-full object-cover opacity-20" 
+                 loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/80 to-obsidian"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7">
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-6" data-testid="hero-overline">
+                        AI-POWERED FREELANCING
+                    </p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-cabinet tracking-tighter leading-none mb-6" data-testid="hero-title">
+                        Become an AI-Powered Freelancer
+                    </h1>
+                    <p class="text-base sm:text-lg leading-relaxed text-foreground-muted max-w-2xl mb-8" data-testid="hero-description">
+                        Master the art of AI-powered freelancing. Learn cutting-edge tools, strategies, and techniques to build a sustainable freelance career in the age of artificial intelligence.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="/ai-freelancing-guide.html" 
+                           class="px-8 py-4 bg-white text-obsidian font-medium rounded-sm hover:bg-gray-200 transition-all duration-300 text-center" 
+                           data-testid="hero-cta-primary">
+                            Get Started Now
+                        </a>
+                        <a href="/blog.html" 
+                           class="px-8 py-4 border border-border-default text-white font-medium rounded-sm hover:bg-white/10 transition-all duration-300 text-center" 
+                           data-testid="hero-cta-secondary">
+                            Read Articles
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-5">
+                    <div class="bg-card-dark border border-border-default rounded-sm p-8 backdrop-blur-xl">
+                        <p class="font-mono text-xs text-signal-red mb-4">// STATS</p>
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-3xl font-bold font-cabinet">100+</p>
+                                <p class="text-sm text-foreground-muted">Expert Articles</p>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold font-cabinet">50+</p>
+                                <p class="text-sm text-foreground-muted">AI Tools Reviewed</p>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold font-cabinet">10K+</p>
+                                <p class="text-sm text-foreground-muted">Developers Learning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Value Proposition -->
+    <section class="py-24 md:py-32 border-t border-border-subtle" data-testid="value-proposition-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-4">WHY AI FREELANCING</p>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-cabinet tracking-tight leading-tight mb-6">
+                    The Future of Developer Work
+                </h2>
+                <p class="text-base leading-relaxed text-foreground-muted max-w-3xl mx-auto">
+                    AI is transforming how developers work. Learn to leverage cutting-edge AI tools to 10x your productivity, deliver faster, and command premium rates.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-card-dark border border-border-default p-8 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="value-card-1">
+                    <div class="w-12 h-12 bg-signal-red/10 border border-signal-red/20 rounded-sm flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-signal-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-semibold font-cabinet tracking-tight mb-4">10x Productivity</h3>
+                    <p class="text-base leading-relaxed text-foreground-muted">
+                        Use AI assistants like GPT-5.2, Claude Sonnet 4.5, and Copilot to write code faster, debug smarter, and ship products in record time.
+                    </p>
+                </div>
+                
+                <div class="bg-card-dark border border-border-default p-8 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="value-card-2">
+                    <div class="w-12 h-12 bg-signal-red/10 border border-signal-red/20 rounded-sm flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-signal-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-semibold font-cabinet tracking-tight mb-4">Premium Rates</h3>
+                    <p class="text-base leading-relaxed text-foreground-muted">
+                        AI-skilled developers command 2-3x higher rates. Position yourself as an expert and attract high-value clients.
+                    </p>
+                </div>
+                
+                <div class="bg-card-dark border border-border-default p-8 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="value-card-3">
+                    <div class="w-12 h-12 bg-signal-red/10 border border-signal-red/20 rounded-sm flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-signal-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-semibold font-cabinet tracking-tight mb-4">Future-Proof Skills</h3>
+                    <p class="text-base leading-relaxed text-foreground-muted">
+                        Stay ahead of the curve with knowledge of the latest AI models, tools, and techniques that are reshaping software development.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Articles -->
+    <section class="py-24 md:py-32 border-t border-border-subtle" data-testid="featured-articles-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-4">LATEST INSIGHTS</p>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-cabinet tracking-tight leading-tight">
+                        Featured Articles
+                    </h2>
+                </div>
+                <a href="/blog.html" class="text-sm text-signal-red hover:underline" data-testid="view-all-articles">View All →</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="article-card-1">
+                    <img src="https://images.unsplash.com/photo-1754548930550-be9fa88874f4?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" 
+                         alt="Meta Llama AI Models Update" 
+                         class="w-full h-48 object-cover" 
+                         loading="lazy">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider">AI MODELS</span>
+                            <span class="text-xs text-foreground-muted">5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-semibold font-cabinet tracking-tight mb-3 hover:text-signal-red transition-colors">
+                            <a href="/blog-post.html?id=llama-update" data-testid="article-link-1">Update on Llama Family of AI Models From Meta</a>
+                        </h3>
+                        <p class="text-sm text-foreground-muted leading-relaxed mb-4">
+                            Llama 4 brings native multimodal capabilities with Scout, Maverick, and Behemoth models. Learn about the evolution from open-source to proprietary AI.
+                        </p>
+                        <a href="/blog-post.html?id=llama-update" class="text-sm text-signal-red hover:underline" data-testid="read-more-1">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="article-card-2">
+                    <img src="https://images.unsplash.com/photo-1598789858997-66ad403aa8e1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" 
+                         alt="AI Freelancing" 
+                         class="w-full h-48 object-cover" 
+                         loading="lazy">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider">FREELANCING</span>
+                            <span class="text-xs text-foreground-muted">8 min read</span>
+                        </div>
+                        <h3 class="text-xl font-semibold font-cabinet tracking-tight mb-3 hover:text-signal-red transition-colors">
+                            <a href="/blog-post.html?id=getting-started" data-testid="article-link-2">Getting Started with AI-Powered Freelancing in 2026</a>
+                        </h3>
+                        <p class="text-sm text-foreground-muted leading-relaxed mb-4">
+                            A comprehensive guide for developers looking to leverage AI tools and build a successful freelance career in the modern era.
+                        </p>
+                        <a href="/blog-post.html?id=getting-started" class="text-sm text-signal-red hover:underline" data-testid="read-more-2">Read More →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="article-card-3">
+                    <img src="https://images.unsplash.com/photo-1550438496-8c6e269e7886?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" 
+                         alt="Frontier AI Models" 
+                         class="w-full h-48 object-cover" 
+                         loading="lazy">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider">RESEARCH</span>
+                            <span class="text-xs text-foreground-muted">12 min read</span>
+                        </div>
+                        <h3 class="text-xl font-semibold font-cabinet tracking-tight mb-3 hover:text-signal-red transition-colors">
+                            <a href="/blog-post.html?id=frontier-models" data-testid="article-link-3">Research Report on Frontier AI Models (Apr 2026)</a>
+                        </h3>
+                        <p class="text-sm text-foreground-muted leading-relaxed mb-4">
+                            Deep dive into the latest frontier AI models, their capabilities, and how developers can leverage them for competitive advantage.
+                        </p>
+                        <a href="/blog-post.html?id=frontier-models" class="text-sm text-signal-red hover:underline" data-testid="read-more-3">Read More →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tools Preview -->
+    <section class="py-24 md:py-32 border-t border-border-subtle" data-testid="tools-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-4">ESSENTIAL TOOLKIT</p>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-cabinet tracking-tight leading-tight mb-6">
+                    AI Tools for Freelancers
+                </h2>
+                <p class="text-base leading-relaxed text-foreground-muted max-w-3xl mx-auto">
+                    Curated collection of the best AI tools to accelerate your development workflow and boost your freelance business.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-1">
+                    <div class="font-mono text-xs text-signal-red mb-2">CODE ASSISTANT</div>
+                    <h3 class="text-lg font-semibold font-cabinet mb-2">GitHub Copilot</h3>
+                    <p class="text-sm text-foreground-muted">AI pair programmer</p>
+                </div>
+                
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-2">
+                    <div class="font-mono text-xs text-signal-red mb-2">LLM</div>
+                    <h3 class="text-lg font-semibold font-cabinet mb-2">GPT-5.2</h3>
+                    <p class="text-sm text-foreground-muted">Advanced reasoning model</p>
+                </div>
+                
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-3">
+                    <div class="font-mono text-xs text-signal-red mb-2">LLM</div>
+                    <h3 class="text-lg font-semibold font-cabinet mb-2">Claude Sonnet 4.5</h3>
+                    <p class="text-sm text-foreground-muted">Long context specialist</p>
+                </div>
+                
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-4">
+                    <div class="font-mono text-xs text-signal-red mb-2">DESIGN</div>
+                    <h3 class="text-lg font-semibold font-cabinet mb-2">Midjourney v7</h3>
+                    <p class="text-sm text-foreground-muted">AI image generation</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="/tools.html" class="px-8 py-4 border border-border-default text-white font-medium rounded-sm hover:bg-white/10 transition-all duration-300 inline-block" data-testid="view-all-tools">
+                    View All Tools →
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-24 md:py-32 border-t border-border-subtle" data-testid="cta-section">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="bg-card-dark border border-border-default p-12 md:p-16">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-6">START LEARNING TODAY</p>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-cabinet tracking-tight leading-tight mb-6">
+                    Ready to Transform Your Freelance Career?
+                </h2>
+                <p class="text-base leading-relaxed text-foreground-muted mb-8 max-w-2xl mx-auto">
+                    Get instant access to our comprehensive AI freelancing guide and start building your future today.
+                </p>
+                <a href="/ai-freelancing-guide.html" class="px-8 py-4 bg-white text-obsidian font-medium rounded-sm hover:bg-gray-200 transition-all duration-300 inline-block" data-testid="cta-guide-button">
+                    Access Free Guide
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-16 border-t border-border-subtle" data-testid="footer">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="font-cabinet text-xl font-bold tracking-tight mb-4">
+                        TheNext<span class="text-signal-red">Freelancer</span>
+                    </div>
+                    <p class="text-sm text-foreground-muted leading-relaxed max-w-md">
+                        Empowering developers to build successful freelance careers using AI. Learn, grow, and thrive in the age of artificial intelligence.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="/about.html" class="hover:text-signal-red transition-colors" data-testid="footer-about">About</a></li>
+                        <li><a href="/blog.html" class="hover:text-signal-red transition-colors" data-testid="footer-blog">Blog</a></li>
+                        <li><a href="/ai-freelancing-guide.html" class="hover:text-signal-red transition-colors" data-testid="footer-guide">AI Guide</a></li>
+                        <li><a href="/tools.html" class="hover:text-signal-red transition-colors" data-testid="footer-tools">Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Connect</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="#" class="hover:text-signal-red transition-colors" data-testid="footer-twitter">Twitter</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors" data-testid="footer-linkedin">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors" data-testid="footer-github">GitHub</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors" data-testid="footer-email">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-foreground-muted">
+                    © 2026 TheNextFreelancer. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm text-foreground-muted">
+                    <a href="#" class="hover:text-signal-red transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-signal-red transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
