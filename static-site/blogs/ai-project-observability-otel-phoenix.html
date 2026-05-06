@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Setup Your AI Project for Observability Using OTel and Arize Phoenix | TheNextFreelancer</title>
+    <meta name="description" content="Step-by-step guide to setting up observability for your AI project using OpenTelemetry (OTel) and Arize Phoenix. Monitor LLM traces, latency, and inputs/outputs.">
+    <meta name="keywords" content="OpenTelemetry, Arize Phoenix, AI observability, LLM monitoring, tracing, AI project setup, OTel">
+    <meta name="author" content="TheNextFreelancer">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://thenextfreelancer.com/blogs/ai-project-observability-otel-phoenix.html">
+    
+    <!-- Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com api.fontshare.com; font-src fonts.gstatic.com cdn.fontshare.com; img-src 'self' data: https://images.unsplash.com https://images.pexels.com;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="How to Setup Your AI Project for Observability Using OTel and Arize Phoenix">
+    <meta property="og:description" content="Step-by-step guide to setting up observability for your AI project using OpenTelemetry and Arize Phoenix.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://thenextfreelancer.com/blogs/ai-project-observability-otel-phoenix.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200">
+    <meta property="og:site_name" content="TheNextFreelancer">
+    <meta property="article:published_time" content="2026-05-02T07:42:00Z">
+    <meta property="article:modified_time" content="2026-05-02T07:42:00Z">
+    <meta property="article:author" content="TheNextFreelancer">
+    <meta property="article:section" content="Tutorials">
+    <meta property="article:tag" content="OpenTelemetry">
+    <meta property="article:tag" content="Arize Phoenix">
+    <meta property="article:tag" content="Observability">
+    <meta property="article:tag" content="AI Development">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Setup Your AI Project for Observability Using OTel and Arize Phoenix">
+    <meta name="twitter:description" content="Step-by-step guide to setting up observability for your AI project.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200">
+    
+    <!-- Schema.org BlogPosting -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://thenextfreelancer.com/blogs/ai-project-observability-otel-phoenix.html"
+        },
+        "headline": "How to Setup Your AI Project for Observability Using OTel and Arize Phoenix",
+        "description": "Step-by-step guide to setting up observability for your AI project using OpenTelemetry and Arize Phoenix.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200",
+        "author": {
+            "@type": "Organization",
+            "name": "TheNextFreelancer",
+            "url": "https://thenextfreelancer.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "TheNextFreelancer",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://thenextfreelancer.com/favicon.svg"
+            }
+        },
+        "datePublished": "2026-05-02",
+        "dateModified": "2026-05-02",
+        "articleSection": "Tutorials",
+        "keywords": ["OpenTelemetry", "Arize Phoenix", "AI Observability", "LLM Monitoring"],
+        "wordCount": 1500,
+        "timeRequired": "PT7M"
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'obsidian': '#0A0A0A',
+                        'card-dark': '#121212',
+                        'border-default': '#27272A',
+                        'border-subtle': '#18181B',
+                        'signal-red': '#FF3366',
+                        'signal-red-hover': '#E62E5C',
+                        'foreground-muted': '#A1A1AA'
+                    },
+                    fontFamily: {
+                        'cabinet': ['Cabinet Grotesk', 'sans-serif'],
+                        'work': ['Work Sans', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-obsidian text-white font-work antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-obsidian/70 border-b border-white/10" data-testid="main-navigation">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="font-cabinet text-xl font-bold tracking-tight" data-testid="logo-link">
+                    TheNext<span class="text-signal-red">Freelancer</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-about">About</a>
+                    <a href="/blog.html" class="text-sm text-signal-red transition-colors" data-testid="nav-blog">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-guide">Guide</a>
+                    <a href="/tools.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-tools">Tools</a>
+                </div>
+                <button class="md:hidden" id="mobile-menu-btn" data-testid="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+                <div class="flex flex-col gap-4">
+                    <a href="/about.html" class="text-sm hover:text-signal-red transition-colors">About</a>
+                    <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors">Blog</a>
+                    <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors">Guide</a>
+                    <a href="/tools.html" class="text-sm hover:text-signal-red transition-colors">Tools</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+    <article class="blog-post pt-32 pb-24" data-testid="blog-article">
+        <div class="max-w-4xl mx-auto px-6">
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" class="mb-6">
+                <ol class="flex items-center gap-2 text-sm text-foreground-muted">
+                    <li><a href="/" class="hover:text-signal-red transition-colors">Home</a></li>
+                    <li>/</li>
+                    <li><a href="/blog.html" class="hover:text-signal-red transition-colors">Blog</a></li>
+                    <li>/</li>
+                    <li class="text-white">AI Project Observability</li>
+                </ol>
+            </nav>
+            
+            <!-- Article Header -->
+            <header class="mb-12">
+                <div class="flex flex-wrap items-center gap-3 mb-6">
+                    <span class="font-mono text-xs border border-border-default bg-card-dark text-foreground-muted px-2 py-1 uppercase tracking-wider" data-testid="article-category">TUTORIALS</span>
+                    <time datetime="2026-05-02" class="text-sm text-foreground-muted" data-testid="article-date">May 2, 2026</time>
+                    <span class="text-sm text-foreground-muted" aria-label="7 minute read time" data-testid="article-read-time">7 min read</span>
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black font-cabinet tracking-tighter leading-tight mb-6" data-testid="article-title">
+                    How to Setup Your AI Project for Observability Using OTel and Arize Phoenix
+                </h1>
+                
+                <p class="text-lg text-foreground-muted leading-relaxed" data-testid="article-excerpt">
+                    Setting up observability for your AI project is like installing a "flight recorder" (OpenTelemetry) and a "mission control dashboard" (Arize Phoenix). This guide walks you through the full setup.
+                </p>
+            </header>
+            
+            <!-- Featured Image -->
+            <figure class="mb-12">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200" 
+                     alt="Dashboard showing AI observability metrics and traces" 
+                     class="w-full h-auto" 
+                     loading="eager"
+                     data-testid="article-featured-image">
+                <figcaption class="text-xs text-foreground-muted mt-2">Monitoring your AI application with real-time observability</figcaption>
+            </figure>
+            
+            <!-- Article Body -->
+            <div class="prose max-w-none" data-testid="article-content">
+                
+                <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-4 mt-12 text-white">The Big Picture Flow</h2>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">
+                    Before diving into code, let's understand the architecture. Think of it as a pipeline with four components:
+                </p>
+                
+                <ol class="list-decimal list-inside space-y-3 text-base leading-relaxed text-foreground-muted mb-6 ml-4">
+                    <li><strong class="text-white">The Application</strong>: Your code (React, Python, FastAPI, etc.)</li>
+                    <li><strong class="text-white">The Instrument (OTel)</strong>: A small piece of code that "listens" to what your app is doing</li>
+                    <li><strong class="text-white">The Collector</strong>: The pipe that carries telemetry data</li>
+                    <li><strong class="text-white">The Viewer (Phoenix)</strong>: The dashboard where you watch the traces</li>
+                </ol>
+                
+                <div class="bg-card-dark border-l-4 border-signal-red p-6 my-8">
+                    <p class="text-sm font-mono text-signal-red mb-2">WHY THIS MATTERS FOR FREELANCERS</p>
+                    <p class="text-base leading-relaxed text-white">
+                        Clients pay premium rates for AI projects that are well-monitored and debuggable. Adding observability to your projects shows professionalism and makes debugging 10x faster when things go wrong in production.
+                    </p>
+                </div>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-4 mt-12 text-white">Step 1: Start Your Dashboard (Arize Phoenix)</h2>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">
+                    Before your app can send data anywhere, you need a place for it to land. The easiest way is to run Phoenix locally on your machine.
+                </p>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-4">In your terminal, run:</p>
+                
+                <pre class="bg-obsidian border border-border-default rounded-sm p-6 overflow-x-auto my-6"><code class="font-mono text-sm text-white">pip install arize-phoenix
+phoenix serve</code></pre>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">
+                    <strong class="text-white">What just happened?</strong> You started a local server. Open <code class="font-mono bg-card-dark px-2 py-1 text-sm">http://localhost:6006</code> in your browser to see your (currently empty) dashboard.
+                </p>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-4 mt-12 text-white">Step 2: Install the "Flight Recorder"</h2>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">
+                    You need to install the OpenTelemetry (OTel) libraries that specifically understand AI and LLMs. Install the <code class="font-mono bg-card-dark px-2 py-1 text-sm">arize-phoenix-otel</code> helper package.
+                </p>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-4">In your project folder, run:</p>
+                
+                <pre class="bg-obsidian border border-border-default rounded-sm p-6 overflow-x-auto my-6"><code class="font-mono text-sm text-white">pip install arize-phoenix-otel openinference-instrumentation-openai</code></pre>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">
+                    <em>Note: If you use LangChain or LlamaIndex instead of raw OpenAI, there are specific "instrumentors" for those too (e.g., <code class="font-mono bg-card-dark px-2 py-1 text-sm">openinference-instrumentation-langchain</code>).</em>
+                </p>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-4 mt-12 text-white">Step 3: Turn on the Auto-Recorder</h2>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">
+                    Now, tell your code: <em>"Every time I talk to an LLM, record it and send it to Phoenix."</em> You can do this with just <strong class="text-white">two lines of code</strong> at the top of your main script:
+                </p>
+                
+                <pre class="bg-obsidian border border-border-default rounded-sm p-6 overflow-x-auto my-6"><code class="font-mono text-sm text-white">from phoenix.otel import register
+
+# This sets up the plumbing and points it to your local Phoenix server
+tracer_provider = register(
+    project_name="my-ai-project",
+    auto_instrument=True
+)</code></pre>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">
+                    By setting <code class="font-mono bg-card-dark px-2 py-1 text-sm">auto_instrument=True</code>, you don't have to manually write "Start Recording" and "Stop Recording" around every function. The OTel library wraps your LLM calls automatically.
+                </p>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-4 mt-12 text-white">Step 4: Run Your Code and Watch</h2>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">
+                    Now run your script. Perform an LLM action (like generating text or classifying data), then go back to <code class="font-mono bg-card-dark px-2 py-1 text-sm">http://localhost:6006</code>. You will see a "Trace" appear with complete details about:
+                </p>
+                
+                <ul class="list-disc list-inside space-y-3 text-base leading-relaxed text-foreground-muted mb-6 ml-4">
+                    <li>The exact prompt you sent to the model</li>
+                    <li>The response received</li>
+                    <li>Latency (how long it took)</li>
+                    <li>Token usage and costs</li>
+                    <li>Any errors that occurred</li>
+                </ul>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-4 mt-12 text-white">Practical Use Cases for Freelancers</h2>
+                
+                <div class="overflow-x-auto my-8">
+                    <table class="w-full border-collapse text-sm">
+                        <thead>
+                            <tr>
+                                <th class="bg-card-dark border border-border-default p-3 text-left font-semibold text-white">Project Type</th>
+                                <th class="bg-card-dark border border-border-default p-3 text-left font-semibold text-white">What to Monitor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-border-default p-3 text-foreground-muted">AI Chatbots</td>
+                                <td class="border border-border-default p-3 text-foreground-muted">Response latency, conversation context window, hallucination detection</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-border-default p-3 text-foreground-muted">RAG Applications</td>
+                                <td class="border border-border-default p-3 text-foreground-muted">Retrieval relevance scores, embedding quality, chunk selection</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-border-default p-3 text-foreground-muted">Content Generation</td>
+                                <td class="border border-border-default p-3 text-foreground-muted">Token costs, generation quality, prompt effectiveness</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-border-default p-3 text-foreground-muted">Data Classification</td>
+                                <td class="border border-border-default p-3 text-foreground-muted">Input/output pairs, accuracy rates, edge cases</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-4 mt-12 text-white">Complete Example: Monitoring an OpenAI Call</h2>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">Here's a full working example combining all the steps:</p>
+                
+                <pre class="bg-obsidian border border-border-default rounded-sm p-6 overflow-x-auto my-6"><code class="font-mono text-sm text-white"># 1. Setup observability (do this ONCE at the top of your app)
+from phoenix.otel import register
+
+tracer_provider = register(
+    project_name="freelance-ai-project",
+    auto_instrument=True
+)
+
+# 2. Your regular application code
+from openai import OpenAI
+
+client = OpenAI()
+
+def classify_content(text):
+    """Classify text content - all calls are automatically traced."""
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "Classify the topic of this text."},
+            {"role": "user", "content": text}
+        ]
+    )
+    return response.choices[0].message.content
+
+# 3. Use your function as normal
+result = classify_content("AI is transforming freelancing...")
+print(result)
+
+# 4. Check http://localhost:6006 to see the full trace!</code></pre>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-4 mt-12 text-white">Moving to Production</h2>
+                
+                <p class="text-base leading-relaxed text-foreground-muted mb-6">
+                    When you're ready to move from your laptop to a "real" setup, you just change the <strong class="text-white">Endpoint URL</strong> in your code to point to a cloud version of Phoenix. The code itself stays exactly the same:
+                </p>
+                
+                <pre class="bg-obsidian border border-border-default rounded-sm p-6 overflow-x-auto my-6"><code class="font-mono text-sm text-white"># Local development
+tracer_provider = register(
+    project_name="my-project",
+    auto_instrument=True
+)
+
+# Production (just add the endpoint)
+tracer_provider = register(
+    project_name="my-project",
+    auto_instrument=True,
+    endpoint="https://your-phoenix-cloud-instance.com/v1/traces"
+)</code></pre>
+                
+                <div class="bg-card-dark border-l-4 border-signal-red p-6 my-8">
+                    <p class="text-sm font-mono text-signal-red mb-2">PRO TIP</p>
+                    <p class="text-base leading-relaxed text-white">
+                        Add observability from Day 1 of your freelance projects. It takes 2 minutes to set up and saves hours of debugging later. Clients are impressed when you can show them real-time dashboards of how their AI system performs.
+                    </p>
+                </div>
+                
+                <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-4 mt-12 text-white">Summary: Quick Setup Checklist</h2>
+                
+                <ol class="list-decimal list-inside space-y-3 text-base leading-relaxed text-foreground-muted mb-6 ml-4">
+                    <li><strong class="text-white">Install Phoenix</strong>: <code class="font-mono bg-card-dark px-2 py-1 text-sm">pip install arize-phoenix</code></li>
+                    <li><strong class="text-white">Start Dashboard</strong>: <code class="font-mono bg-card-dark px-2 py-1 text-sm">phoenix serve</code></li>
+                    <li><strong class="text-white">Install OTel</strong>: <code class="font-mono bg-card-dark px-2 py-1 text-sm">pip install arize-phoenix-otel openinference-instrumentation-openai</code></li>
+                    <li><strong class="text-white">Add 2 lines</strong>: <code class="font-mono bg-card-dark px-2 py-1 text-sm">register(project_name="...", auto_instrument=True)</code></li>
+                    <li><strong class="text-white">Run &amp; monitor</strong>: Open <code class="font-mono bg-card-dark px-2 py-1 text-sm">localhost:6006</code></li>
+                </ol>
+                
+                <!-- Internal Links -->
+                <div class="bg-card-dark border border-border-default p-6 my-8">
+                    <p class="text-sm font-mono text-signal-red mb-3">RELATED READING</p>
+                    <ul class="space-y-2">
+                        <li><a href="/blogs/improving-llm-accuracy.html" class="text-signal-red hover:underline text-base">Improving Accuracy of LLM Applications</a></li>
+                        <li><a href="/blogs/getting-started-ai-freelancing.html" class="text-signal-red hover:underline text-base">Getting Started with AI-Powered Freelancing in 2026</a></li>
+                        <li><a href="/tools.html" class="text-signal-red hover:underline text-base">AI Tools Directory</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Article Footer -->
+            <footer class="mt-16 pt-8 border-t border-border-subtle">
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="text-sm text-foreground-muted">Tags:</span>
+                    <span class="text-sm text-signal-red">OpenTelemetry</span>
+                    <span class="text-sm text-signal-red">Arize Phoenix</span>
+                    <span class="text-sm text-signal-red">Observability</span>
+                    <span class="text-sm text-signal-red">AI Development</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <a href="/blog.html" class="text-sm text-signal-red hover:underline" data-testid="back-to-blog">&larr; Back to All Articles</a>
+                </div>
+            </footer>
+        </div>
+    </article>
+    
+    <!-- Related Articles -->
+    <section class="py-24 border-t border-border-subtle" data-testid="related-articles">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-2xl sm:text-3xl font-bold font-cabinet tracking-tight mb-12">Related Articles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1598789858997-66ad403aa8e1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" alt="Improving LLM Accuracy" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <span class="font-mono text-xs text-signal-red">TUTORIALS</span>
+                        <h3 class="text-lg font-semibold font-cabinet mt-2 mb-2">Improving LLM Accuracy</h3>
+                        <a href="/blogs/improving-llm-accuracy.html" class="text-sm text-signal-red hover:underline">Read More &rarr;</a>
+                    </div>
+                </article>
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1754548930550-be9fa88874f4?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" alt="Llama AI Models" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <span class="font-mono text-xs text-signal-red">AI MODELS</span>
+                        <h3 class="text-lg font-semibold font-cabinet mt-2 mb-2">Llama AI Models Update</h3>
+                        <a href="/blogs/llama-update.html" class="text-sm text-signal-red hover:underline">Read More &rarr;</a>
+                    </div>
+                </article>
+                <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1520583457224-aee11bad5112?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" alt="Getting Started with AI Freelancing" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <span class="font-mono text-xs text-signal-red">FREELANCING</span>
+                        <h3 class="text-lg font-semibold font-cabinet mt-2 mb-2">Getting Started Guide</h3>
+                        <a href="/blogs/getting-started-ai-freelancing.html" class="text-sm text-signal-red hover:underline">Read More &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="py-16 border-t border-border-subtle" data-testid="footer">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="font-cabinet text-xl font-bold tracking-tight mb-4">TheNext<span class="text-signal-red">Freelancer</span></div>
+                    <p class="text-sm text-foreground-muted leading-relaxed max-w-md">Empowering developers to build successful freelance careers using AI.</p>
+                </div>
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="/about.html" class="hover:text-signal-red transition-colors">About</a></li>
+                        <li><a href="/blog.html" class="hover:text-signal-red transition-colors">Blog</a></li>
+                        <li><a href="/ai-freelancing-guide.html" class="hover:text-signal-red transition-colors">AI Guide</a></li>
+                        <li><a href="/tools.html" class="hover:text-signal-red transition-colors">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-cabinet font-semibold mb-4">Connect</h4>
+                    <ul class="space-y-2 text-sm text-foreground-muted">
+                        <li><a href="#" class="hover:text-signal-red transition-colors">Twitter</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-signal-red transition-colors">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-foreground-muted">&copy; 2026 TheNextFreelancer. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-foreground-muted">
+                    <a href="#" class="hover:text-signal-red transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-signal-red transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>
