@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/thenextfreelance/public_html/
+    - /bin/rm DEPLOYMENT.md
+    - /bin/rm FAVICON.md
+    - /bin/rm PROJECT_SUMMARY.md
+    - /bin/rm README.md
+    - /bin/cp -R static-site $DEPLOYPATH
