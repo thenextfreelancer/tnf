@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>TheNextFreelancer Blog</title>
+        <link>https://thenextfreelancer.com/blog.html</link>
+        <description>Expert insights on AI-powered freelancing, latest AI model updates, machine learning tutorials, and developer career advice.</description>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 02 May 2026 10:00:00 GMT</lastBuildDate>
+        <atom:link href="https://thenextfreelancer.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <image>
+            <url>https://thenextfreelancer.com/favicon.svg</url>
+            <title>TheNextFreelancer Blog</title>
+            <link>https://thenextfreelancer.com</link>
+        </image>
+        
+        <item>
+            <title>How to Setup Your AI Project for Observability Using OTel and Arize Phoenix</title>
+            <link>https://thenextfreelancer.com/blogs/ai-project-observability-otel-phoenix.html</link>
+            <guid isPermaLink="true">https://thenextfreelancer.com/blogs/ai-project-observability-otel-phoenix.html</guid>
+            <pubDate>Sat, 02 May 2026 10:00:00 GMT</pubDate>
+            <dc:creator>TheNextFreelancer</dc:creator>
+            <category>Tutorials</category>
+            <description>Step-by-step guide to setting up observability for your AI project using OpenTelemetry (OTel) and Arize Phoenix. Monitor LLM traces, latency, and inputs/outputs.</description>
+        </item>
+        
+        <item>
+            <title>Update on Llama Family of AI Models From Meta</title>
+            <link>https://thenextfreelancer.com/blogs/llama-update.html</link>
+            <guid isPermaLink="true">https://thenextfreelancer.com/blogs/llama-update.html</guid>
+            <pubDate>Mon, 06 Apr 2026 10:00:00 GMT</pubDate>
+            <dc:creator>TheNextFreelancer</dc:creator>
+            <category>AI Models</category>
+            <description>Deep dive into Meta's Llama 4 AI models including Scout, Maverick, and Behemoth. Learn about the evolution from open-source to proprietary AI and what it means for freelancers.</description>
+        </item>
+        
+        <item>
+            <title>Getting Started with AI-Powered Freelancing in 2026</title>
+            <link>https://thenextfreelancer.com/blogs/getting-started-ai-freelancing.html</link>
+            <guid isPermaLink="true">https://thenextfreelancer.com/blogs/getting-started-ai-freelancing.html</guid>
+            <pubDate>Sun, 05 Apr 2026 10:00:00 GMT</pubDate>
+            <dc:creator>TheNextFreelancer</dc:creator>
+            <category>Freelancing</category>
+            <description>A comprehensive roadmap for developers transitioning to AI-powered freelancing. Learn tools, pricing strategies, and how to position yourself for success.</description>
+        </item>
+        
+        <item>
+            <title>Research Report on Frontier AI Models (Apr 2026)</title>
+            <link>https://thenextfreelancer.com/blogs/frontier-ai-models.html</link>
+            <guid isPermaLink="true">https://thenextfreelancer.com/blogs/frontier-ai-models.html</guid>
+            <pubDate>Sat, 04 Apr 2026 10:00:00 GMT</pubDate>
+            <dc:creator>TheNextFreelancer</dc:creator>
+            <category>Research</category>
+            <description>Comprehensive analysis of GPT-5.2, Claude Sonnet 4.5, Gemini 3, and other frontier models. Performance benchmarks and use cases for freelancers.</description>
+        </item>
+        
+        <item>
+            <title>Complete Machine Learning Course Index</title>
+            <link>https://thenextfreelancer.com/blogs/machine-learning-course.html</link>
+            <guid isPermaLink="true">https://thenextfreelancer.com/blogs/machine-learning-course.html</guid>
+            <pubDate>Fri, 03 Apr 2026 10:00:00 GMT</pubDate>
+            <dc:creator>TheNextFreelancer</dc:creator>
+            <category>Machine Learning</category>
+            <description>Comprehensive curriculum covering supervised learning, neural networks, NLP, and deployment strategies for freelance developers.</description>
+        </item>
+        
+        <item>
+            <title>Improving Accuracy of LLM Applications</title>
+            <link>https://thenextfreelancer.com/blogs/improving-llm-accuracy.html</link>
+            <guid isPermaLink="true">https://thenextfreelancer.com/blogs/improving-llm-accuracy.html</guid>
+            <pubDate>Thu, 02 Apr 2026 10:00:00 GMT</pubDate>
+            <dc:creator>TheNextFreelancer</dc:creator>
+            <category>Tutorials</category>
+            <description>Practical techniques for improving LLM outputs using prompt engineering, fine-tuning, RAG, and evaluation frameworks.</description>
+        </item>
+        
+        <item>
+            <title>Python for AI: Complete Course Index</title>
+            <link>https://thenextfreelancer.com/blogs/python-for-ai.html</link>
+            <guid isPermaLink="true">https://thenextfreelancer.com/blogs/python-for-ai.html</guid>
+            <pubDate>Wed, 01 Apr 2026 10:00:00 GMT</pubDate>
+            <dc:creator>TheNextFreelancer</dc:creator>
+            <category>Tutorials</category>
+            <description>Master Python fundamentals and advanced concepts needed for AI and machine learning development. Includes hands-on projects and practical exercises.</description>
+        </item>
+        
+    </channel>
+</rss>
