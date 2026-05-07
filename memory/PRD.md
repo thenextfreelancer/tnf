@@ -24,6 +24,15 @@ Build a production-ready static website for "TheNextFreelancer" brand. Fast, SEO
 - Fixed all navigation links to point to correct `/blogs/<slug>.html` paths
 - Updated sitemap.xml with all blog post URLs
 
+### Phase 3 (May 7, 2026)
+- Added client-side blog search & tag filtering on `/blog.html`
+  - Search input with debounced (120ms) token-AND matching across title/description/category/keywords
+  - Category tag chips dynamically built from `/blogs/index.json` with per-tag post counts
+  - Live result count, empty state with reset button, search-term highlighting via `<mark>`
+  - URL query param sync (`?q=llama&tag=Tutorials`) for shareable filters
+  - SEO/no-JS fallback: original static grid preserved inside `<noscript>`
+  - Files: `/static-site/js/blog-search.js`, CSS additions in `/static-site/css/styles.css`
+
 ## Blog Posts Created
 1. ai-project-observability-otel-phoenix.html (NEW - May 2, 2026)
 2. llama-update.html (Apr 6, 2026)

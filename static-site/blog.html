@@ -54,6 +54,7 @@
     </script>
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate" type="application/rss+xml" title="TheNextFreelancer Blog" href="/feed.xml">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-obsidian text-white font-work antialiased">
@@ -90,10 +91,10 @@
     
     <main>
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-16 md:pt-40 md:pb-24" data-testid="blog-hero">
+    <section class="relative pt-24 pb-4 md:pt-28 md:pb-6" data-testid="blog-hero">
         <div class="max-w-7xl mx-auto px-6">
             <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-6">BLOG</p>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-cabinet tracking-tighter leading-none mb-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-cabinet tracking-tighter leading-none mb-4">
                 Insights on AI &amp; Freelancing
             </h1>
             <p class="text-base sm:text-lg leading-relaxed text-foreground-muted max-w-3xl">
@@ -101,11 +102,63 @@
             </p>
         </div>
     </section>
-    
-    <!-- Blog Articles Grid -->
-    <section class="py-16 md:py-24 border-t border-border-subtle" data-testid="blog-articles-section">
+
+    <!-- Search & Filter Toolbar -->
+    <section class="pt-6 pb-4" data-testid="blog-search-section">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="flex flex-col lg:flex-row lg:items-center gap-4">
+                <!-- Search input -->
+                <div class="blog-search-wrapper" data-testid="blog-search-wrapper">
+                    <svg class="blog-search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"></path>
+                    </svg>
+                    <input
+                        id="blog-search-input"
+                        type="search"
+                        class="blog-search-input"
+                        placeholder="Search articles by title, topic, or keyword…"
+                        autocomplete="off"
+                        spellcheck="false"
+                        aria-label="Search blog posts"
+                        data-testid="blog-search-input"
+                    >
+                    <button type="button" class="blog-search-clear hidden" id="blog-search-clear" aria-label="Clear search" data-testid="blog-search-clear">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Result count -->
+                <div class="blog-result-count" id="blog-result-count" data-testid="blog-result-count" aria-live="polite">7 posts</div>
+            </div>
+
+            <!-- Tag filter chips -->
+            <div class="mt-5 blog-tag-filters" id="blog-tag-filters" role="group" aria-label="Filter by category" data-testid="blog-tag-filters">
+                <!-- Populated by /js/blog-search.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Articles Grid -->
+    <section class="pt-2 pb-16 md:pb-12 border-t border-border-subtle" data-testid="blog-articles-section">
+        <div class="max-w-7xl mx-auto px-6 pt-8">
+            <!-- Dynamic grid (rendered by /js/blog-search.js) -->
+            <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="blog-grid"></div>
+
+            <!-- Empty state -->
+            <div id="blog-empty-state" class="blog-empty-state hidden mt-6" data-testid="blog-empty-state">
+                <h3>No matching articles</h3>
+                <p>Try a different keyword or clear filters to see all posts.</p>
+                <button type="button" id="blog-reset-filters" class="blog-reset-btn" data-testid="blog-reset-filters">Reset filters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO/no-JS fallback: original static grid -->
+    <noscript>
+        <section class="py-16 md:py-12 border-t border-border-subtle">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <!-- Article: AI Observability (NEW) -->
                 <article class="bg-card-dark border border-border-default overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]" data-testid="blog-article-observability">
@@ -275,15 +328,16 @@
                     </div>
                 </article>
                 
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </noscript>
     </main>
     
     <!-- Footer -->
-    <footer class="py-16 border-t border-border-subtle" data-testid="footer">
+    <footer class="py-10 border-t border-border-subtle" data-testid="footer">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-8">
                 <div class="md:col-span-2">
                     <div class="font-cabinet text-xl font-bold tracking-tight mb-4">
                         TheNext<span class="text-signal-red">Freelancer</span>
@@ -321,5 +375,6 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <script src="js/blog-search.js"></script>
 </body>
 </html>

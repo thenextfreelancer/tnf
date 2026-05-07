@@ -1,0 +1,84 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-05-02T10:00:00Z",
+  "totalPosts": 7,
+  "posts": [
+    {
+      "slug": "ai-project-observability-otel-phoenix",
+      "title": "How to Setup Your AI Project for Observability Using OTel and Arize Phoenix",
+      "description": "Step-by-step guide to setting up observability for your AI project using OpenTelemetry and Arize Phoenix.",
+      "category": "Tutorials",
+      "date": "2026-05-02",
+      "readTime": 7,
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+      "url": "/blogs/ai-project-observability-otel-phoenix.html",
+      "keywords": ["OpenTelemetry", "Arize Phoenix", "Observability", "AI Development"]
+    },
+    {
+      "slug": "llama-update",
+      "title": "Update on Llama Family of AI Models From Meta",
+      "description": "Deep dive into Meta's Llama 4 AI models including Scout, Maverick, and Behemoth.",
+      "category": "AI Models",
+      "date": "2026-04-06",
+      "readTime": 5,
+      "image": "https://images.unsplash.com/photo-1754548930550-be9fa88874f4?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+      "url": "/blogs/llama-update.html",
+      "keywords": ["Llama 4", "Meta AI", "Open Source LLM"]
+    },
+    {
+      "slug": "getting-started-ai-freelancing",
+      "title": "Getting Started with AI-Powered Freelancing in 2026",
+      "description": "A comprehensive roadmap for developers transitioning to AI-powered freelancing.",
+      "category": "Freelancing",
+      "date": "2026-04-05",
+      "readTime": 8,
+      "image": "https://images.unsplash.com/photo-1598789858997-66ad403aa8e1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+      "url": "/blogs/getting-started-ai-freelancing.html",
+      "keywords": ["AI Freelancing", "Getting Started", "Developer Career"]
+    },
+    {
+      "slug": "frontier-ai-models",
+      "title": "Research Report on Frontier AI Models (Apr 2026)",
+      "description": "Comprehensive analysis of GPT-5.2, Claude Sonnet 4.5, Gemini 3, and other frontier models.",
+      "category": "Research",
+      "date": "2026-04-04",
+      "readTime": 12,
+      "image": "https://images.unsplash.com/photo-1550438496-8c6e269e7886?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+      "url": "/blogs/frontier-ai-models.html",
+      "keywords": ["GPT-5.2", "Claude Sonnet 4.5", "Gemini 3", "AI Benchmarks"]
+    },
+    {
+      "slug": "machine-learning-course",
+      "title": "Complete Machine Learning Course Index",
+      "description": "Comprehensive curriculum covering supervised learning, neural networks, NLP, and deployment.",
+      "category": "Machine Learning",
+      "date": "2026-04-03",
+      "readTime": 10,
+      "image": "https://images.unsplash.com/photo-1520583457224-aee11bad5112?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+      "url": "/blogs/machine-learning-course.html",
+      "keywords": ["Machine Learning", "Neural Networks", "NLP", "Deep Learning"]
+    },
+    {
+      "slug": "improving-llm-accuracy",
+      "title": "Improving Accuracy of LLM Applications",
+      "description": "Practical techniques for improving LLM outputs using prompt engineering, fine-tuning, and RAG.",
+      "category": "Tutorials",
+      "date": "2026-04-02",
+      "readTime": 7,
+      "image": "https://images.unsplash.com/photo-1598789858997-66ad403aa8e1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+      "url": "/blogs/improving-llm-accuracy.html",
+      "keywords": ["LLM Accuracy", "Prompt Engineering", "RAG", "Fine-tuning"]
+    },
+    {
+      "slug": "python-for-ai",
+      "title": "Python for AI: Complete Course Index",
+      "description": "Master Python fundamentals and advanced concepts needed for AI and ML development.",
+      "category": "Tutorials",
+      "date": "2026-04-01",
+      "readTime": 15,
+      "image": "https://images.unsplash.com/photo-1550438496-8c6e269e7886?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+      "url": "/blogs/python-for-ai.html",
+      "keywords": ["Python", "AI Development", "Machine Learning", "Data Science"]
+    }
+  ]
+}
