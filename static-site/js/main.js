@@ -45,7 +45,7 @@ window.addEventListener('scroll', () => {
 
 // Intersection Observer for fade-in animations
 const observerOptions = {
-    threshold: 0.1,
+    threshold: 0,
     rootMargin: '0px 0px -50px 0px'
 };
 
@@ -58,8 +58,11 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all article cards and sections
+// Observe article cards and section blocks, but skip the main blog-post
+// article (it's the primary content; no fade needed and it's often taller
+// than the viewport which can prevent the threshold from firing).
 document.querySelectorAll('article, section > div').forEach((el) => {
+    if (el.matches('article.blog-post')) return;
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
