@@ -1,0 +1,109 @@
+# =============================================================
+# TheNextFreelancer .htaccess — for cPanel / Apache hosting
+# Drop this file at the document root alongside index.html
+# =============================================================
+
+# ---- Default Index ------------------------------------------
+DirectoryIndex index.html
+
+# ---- Force HTTPS --------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect all HTTP to HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Redirect www to non-www (canonical: thenextfreelancer.com)
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+    # Allow extensionless URLs (e.g. /about → /about.html)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^([^.]+)$ $1.html [NC,L]
+
+    # Custom 404
+    ErrorDocument 404 /404.html
+</IfModule>
+
+# ---- Correct MIME Types -------------------------------------
+<IfModule mod_mime.c>
+    AddType application/xml         .xml
+    AddType application/rss+xml     .rss .xml
+    AddType image/svg+xml           .svg
+    AddType application/json        .json
+    AddType text/cache-manifest     .appcache
+    AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ---- Compression --------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+    AddOutputFilterByType DEFLATE application/xml application/rss+xml image/svg+xml
+</IfModule>
+
+# ---- Cache Headers ------------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML — short cache, must revalidate
+    ExpiresByType text/html "access plus 1 hour"
+
+    # CSS & JS — 1 month (versioned via ?v= query string)
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+
+    # Images — 1 year
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Fonts — 1 year
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+
+    # XML / RSS / Sitemap — 1 day
+    ExpiresByType application/xml "access plus 1 day"
+    ExpiresByType application/rss+xml "access plus 1 day"
+</IfModule>
+
+# ---- Security Headers ---------------------------------------
+<IfModule mod_headers.c>
+    # Tell crawlers full indexing is allowed (overrides any meta-only conflicts)
+    Header set X-Robots-Tag "index, follow"
+
+    # Security
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+    # Strict transport (HTTPS only)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # Prevent caching of HTML to ensure fresh content
+    <FilesMatch "\.(html)$">
+        Header set Cache-Control "public, max-age=3600, must-revalidate"
+    </FilesMatch>
+
+    # Long cache for static assets
+    <FilesMatch "\.(css|js|svg|png|jpg|jpeg|webp|woff|woff2)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+# ---- Block Hidden Files -------------------------------------
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Allow .well-known for SSL & domain verification
+<IfModule mod_alias.c>
+    Alias /.well-known /home/USERNAME/public_html/.well-known
+</IfModule>

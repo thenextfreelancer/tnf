@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found | TheNextFreelancer</title>
+    <meta name="description" content="The page you are looking for does not exist on TheNextFreelancer.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://thenextfreelancer.com/404.html">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com api.fontshare.com; font-src fonts.gstatic.com cdn.fontshare.com; img-src 'self' data:;">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'obsidian': '#0A0A0A',
+                        'card-dark': '#121212',
+                        'border-default': '#27272A',
+                        'border-subtle': '#18181B',
+                        'signal-red': '#FF3366',
+                        'foreground-muted': '#A1A1AA'
+                    },
+                    fontFamily: {
+                        'cabinet': ['Cabinet Grotesk', 'sans-serif'],
+                        'work': ['Work Sans', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-obsidian text-white font-work antialiased min-h-screen flex flex-col">
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-obsidian/70 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="/" class="font-cabinet text-xl font-bold tracking-tight">TheNext<span class="text-signal-red">Freelancer</span></a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/" class="text-sm hover:text-signal-red transition-colors">Home</a>
+                <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors">Blog</a>
+                <a href="/tools.html" class="text-sm hover:text-signal-red transition-colors">Tools</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-1 flex items-center justify-center px-6 pt-24" data-testid="404-main">
+        <div class="text-center max-w-2xl">
+            <p class="text-xs font-bold uppercase tracking-[0.2em] font-mono text-signal-red mb-6">ERROR 404</p>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black font-cabinet tracking-tighter leading-none mb-6">
+                Page <span class="text-signal-red">Not Found</span>
+            </h1>
+            <p class="text-base sm:text-lg text-foreground-muted leading-relaxed mb-8">
+                The page you are looking for does not exist or has been moved. Try one of the links below.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/" class="px-6 py-3 bg-white text-obsidian font-medium rounded-sm hover:bg-gray-200 transition-all" data-testid="404-home-btn">Back to Home</a>
+                <a href="/blog.html" class="px-6 py-3 border border-border-default text-white font-medium rounded-sm hover:bg-white/10 transition-all" data-testid="404-blog-btn">Read the Blog</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 border-t border-border-subtle mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm text-foreground-muted">&copy; 2026 TheNextFreelancer. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

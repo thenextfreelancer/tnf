@@ -1,14 +1,22 @@
 # robots.txt for TheNextFreelancer
+# https://thenextfreelancer.com
 
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://thenextfreelancer.com/sitemap.xml
-
-# Crawl-delay for polite bots
-Crawl-delay: 1
-
-# Disallow admin or private areas (if any in future)
+# Block crawl-wasteful paths (none currently, kept for future)
 # Disallow: /admin/
 # Disallow: /private/
+
+# Block known aggressive scrapers
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemaps
+Sitemap: https://thenextfreelancer.com/sitemap.xml
