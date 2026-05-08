@@ -315,6 +315,39 @@ h4 + p {
     margin-bottom: 0.5rem;
 }
 
+/* ============================================== */
+/* Tools Directory Filter Buttons                 */
+/* ============================================== */
+
+.tool-filter-btn {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: 1px solid #27272A;
+    color: #FFFFFF;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.tool-filter-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: #3F3F46;
+}
+
+.tool-filter-btn.is-active {
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+    border-color: #FFFFFF;
+}
+
+.tool-filter-btn.is-active:hover {
+    background-color: #E5E5E5;
+}
+
+
 .blog-empty-state p {
     color: #A1A1AA;
     font-size: 0.875rem;

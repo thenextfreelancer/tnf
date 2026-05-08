@@ -1,8 +1,19 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-05-02T10:00:00Z",
-  "totalPosts": 7,
+  "lastUpdated": "2026-05-08T08:00:00Z",
+  "totalPosts": 8,
   "posts": [
+    {
+      "slug": "freelancing-101-ai-powered-2026",
+      "title": "Freelancing 101 in 2026: The AI-Powered Playbook for Every Experience Level",
+      "description": "A practical 2026 freelancing guide for beginners, mid-level, and senior freelancers — with modern AI tools and workflows for every niche.",
+      "category": "Freelancing",
+      "date": "2026-05-08",
+      "readTime": 11,
+      "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+      "url": "/blogs/freelancing-101-ai-powered-2026.html",
+      "keywords": ["Freelancing 2026", "AI Tools", "AI Freelancing", "Career", "Productivity"]
+    },
     {
       "slug": "ai-project-observability-otel-phoenix",
       "title": "How to Setup Your AI Project for Observability Using OTel and Arize Phoenix",

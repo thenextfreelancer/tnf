@@ -7,7 +7,7 @@
     <meta name="description" content="Curated directory of the best AI tools for freelance developers. Code assistants, LLMs, design tools, and automation platforms.">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com api.fontshare.com; font-src fonts.gstatic.com cdn.fontshare.com; img-src 'self' data: https://images.unsplash.com https://images.pexels.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com api.fontshare.com; font-src fonts.gstatic.com cdn.fontshare.com; img-src 'self' data: https://images.unsplash.com https://images.pexels.com;">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="keywords" content="AI tools, developer tools, GPT, Claude, GitHub Copilot, AI directory">
     
@@ -63,6 +63,7 @@
                 </a>
                 
                 <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-home">Home</a>
                     <a href="/about.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-about">About</a>
                     <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-blog">Blog</a>
                     <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors" data-testid="nav-guide">Guide</a>
@@ -78,6 +79,7 @@
             
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
                 <div class="flex flex-col gap-4">
+                    <a href="/" class="text-sm hover:text-signal-red transition-colors">Home</a>
                     <a href="/about.html" class="text-sm hover:text-signal-red transition-colors">About</a>
                     <a href="/blog.html" class="text-sm hover:text-signal-red transition-colors">Blog</a>
                     <a href="/ai-freelancing-guide.html" class="text-sm hover:text-signal-red transition-colors">Guide</a>
@@ -111,12 +113,15 @@
     <!-- Filter Section -->
     <section class="py-4 border-t border-border-subtle" data-testid="tools-filters">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-wrap gap-3">
-                <button class="px-4 py-2 bg-white text-obsidian font-medium rounded-sm text-sm" data-testid="filter-all">All</button>
-                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-code">Code Assistants</button>
-                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-llm">LLMs</button>
-                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-design">Design</button>
-                <button class="px-4 py-2 border border-border-default text-white font-medium rounded-sm text-sm hover:bg-white/10 transition-all" data-testid="filter-automation">Automation</button>
+            <div class="flex flex-wrap gap-3" id="tools-filter-bar">
+                <button class="tool-filter-btn is-active" data-filter="all" data-testid="filter-all">All</button>
+                <button class="tool-filter-btn" data-filter="code" data-testid="filter-code">Code Assistants</button>
+                <button class="tool-filter-btn" data-filter="llm" data-testid="filter-llm">LLMs</button>
+                <button class="tool-filter-btn" data-filter="design" data-testid="filter-design">Design</button>
+                <button class="tool-filter-btn" data-filter="automation" data-testid="filter-automation">Automation</button>
+                <button class="tool-filter-btn" data-filter="content" data-testid="filter-content">Content</button>
+                <button class="tool-filter-btn" data-filter="data" data-testid="filter-data">Data</button>
+                <button class="tool-filter-btn" data-filter="video" data-testid="filter-video">Video</button>
             </div>
         </div>
     </section>
@@ -127,7 +132,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 
                 <!-- Tool Card 1 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-1">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-1" data-category="code">
                     <div class="font-mono text-xs text-signal-red mb-3">CODE ASSISTANT</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">GitHub Copilot</h3>
                     <p class="text-sm text-foreground-muted mb-4">AI pair programmer that suggests entire lines and functions</p>
@@ -138,7 +143,7 @@
                 </div>
                 
                 <!-- Tool Card 2 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-2">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-2" data-category="code">
                     <div class="font-mono text-xs text-signal-red mb-3">CODE ASSISTANT</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Cursor IDE</h3>
                     <p class="text-sm text-foreground-muted mb-4">AI-native code editor with GPT-5 integration</p>
@@ -149,7 +154,7 @@
                 </div>
                 
                 <!-- Tool Card 3 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-3">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-3" data-category="llm">
                     <div class="font-mono text-xs text-signal-red mb-3">LLM</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">GPT-5.2</h3>
                     <p class="text-sm text-foreground-muted mb-4">OpenAI's most advanced reasoning model</p>
@@ -160,7 +165,7 @@
                 </div>
                 
                 <!-- Tool Card 4 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-4">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-4" data-category="llm">
                     <div class="font-mono text-xs text-signal-red mb-3">LLM</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Claude Sonnet 4.5</h3>
                     <p class="text-sm text-foreground-muted mb-4">Anthropic's long-context specialist model</p>
@@ -171,7 +176,7 @@
                 </div>
                 
                 <!-- Tool Card 5 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-5">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-5" data-category="llm">
                     <div class="font-mono text-xs text-signal-red mb-3">LLM</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Gemini 3 Pro</h3>
                     <p class="text-sm text-foreground-muted mb-4">Google's multimodal AI with native image understanding</p>
@@ -182,7 +187,7 @@
                 </div>
                 
                 <!-- Tool Card 6 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-6">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-6" data-category="llm">
                     <div class="font-mono text-xs text-signal-red mb-3">LLM</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Llama 4 Scout</h3>
                     <p class="text-sm text-foreground-muted mb-4">Meta's open-weights model with 10M context</p>
@@ -193,7 +198,7 @@
                 </div>
                 
                 <!-- Tool Card 7 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-7">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-7" data-category="design">
                     <div class="font-mono text-xs text-signal-red mb-3">DESIGN</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Midjourney v7</h3>
                     <p class="text-sm text-foreground-muted mb-4">State-of-the-art AI image generation</p>
@@ -204,7 +209,7 @@
                 </div>
                 
                 <!-- Tool Card 8 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-8">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-8" data-category="design">
                     <div class="font-mono text-xs text-signal-red mb-3">DESIGN</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">DALL-E 4</h3>
                     <p class="text-sm text-foreground-muted mb-4">OpenAI's image generation API</p>
@@ -215,7 +220,7 @@
                 </div>
                 
                 <!-- Tool Card 9 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-9">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-9" data-category="design">
                     <div class="font-mono text-xs text-signal-red mb-3">DESIGN</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Figma AI</h3>
                     <p class="text-sm text-foreground-muted mb-4">AI-powered design automation and generation</p>
@@ -226,7 +231,7 @@
                 </div>
                 
                 <!-- Tool Card 10 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-10">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-10" data-category="automation">
                     <div class="font-mono text-xs text-signal-red mb-3">AUTOMATION</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Make (Integromat)</h3>
                     <p class="text-sm text-foreground-muted mb-4">Visual workflow automation with AI integrations</p>
@@ -237,7 +242,7 @@
                 </div>
                 
                 <!-- Tool Card 11 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-11">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-11" data-category="automation">
                     <div class="font-mono text-xs text-signal-red mb-3">AUTOMATION</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Zapier AI</h3>
                     <p class="text-sm text-foreground-muted mb-4">Connect 5000+ apps with AI automation</p>
@@ -248,7 +253,7 @@
                 </div>
                 
                 <!-- Tool Card 12 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-12">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-12" data-category="code">
                     <div class="font-mono text-xs text-signal-red mb-3">CODE ASSISTANT</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Tabnine</h3>
                     <p class="text-sm text-foreground-muted mb-4">AI code completion for your IDE</p>
@@ -259,7 +264,7 @@
                 </div>
                 
                 <!-- Tool Card 13 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-13">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-13" data-category="content">
                     <div class="font-mono text-xs text-signal-red mb-3">CONTENT</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Copy.ai</h3>
                     <p class="text-sm text-foreground-muted mb-4">AI copywriting for marketing and content</p>
@@ -270,7 +275,7 @@
                 </div>
                 
                 <!-- Tool Card 14 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-14">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-14" data-category="data">
                     <div class="font-mono text-xs text-signal-red mb-3">DATA</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Pinecone</h3>
                     <p class="text-sm text-foreground-muted mb-4">Vector database for AI applications</p>
@@ -281,7 +286,7 @@
                 </div>
                 
                 <!-- Tool Card 15 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-15">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-15" data-category="data">
                     <div class="font-mono text-xs text-signal-red mb-3">DATA</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">LangChain</h3>
                     <p class="text-sm text-foreground-muted mb-4">Framework for developing LLM applications</p>
@@ -292,7 +297,7 @@
                 </div>
                 
                 <!-- Tool Card 16 -->
-                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-16">
+                <div class="bg-card-dark border-r border-b border-border-default p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)]" data-testid="tool-card-16" data-category="video">
                     <div class="font-mono text-xs text-signal-red mb-3">VIDEO</div>
                     <h3 class="text-lg sm:text-xl font-semibold font-cabinet mb-2">Sora 2</h3>
                     <p class="text-sm text-foreground-muted mb-4">OpenAI's text-to-video generation model</p>
@@ -370,5 +375,6 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <script src="js/tools-filter.js?v=20260508"></script>
 </body>
 </html>
