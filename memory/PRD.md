@@ -33,6 +33,15 @@ Build a production-ready static website for "TheNextFreelancer" brand. Fast, SEO
   - SEO/no-JS fallback: original static grid preserved inside `<noscript>`
   - Files: `/static-site/js/blog-search.js`, CSS additions in `/static-site/css/styles.css`
 
+### Phase 4 (May 8, 2026)
+- Added "Home" link to navigation on all 13 HTML pages (desktop + mobile menus)
+- Fixed tools.html category filtering — buttons were dummies; now functional with `data-category` attrs + JS handler in `/static-site/js/tools-filter.js`
+  - 8 filters: All, Code Assistants, LLMs, Design, Automation, Content, Data, Video
+  - URL query sync (`?category=llm`) for shareable filtered views
+  - Active state styling via `.tool-filter-btn.is-active`
+- CSP hardening: added `static.cloudflareinsights.com` to `script-src` so Cloudflare Pages auto-injected analytics beacon loads without CSP violations
+- Verified homepage thumbnails load correctly (Unsplash images, all `naturalWidth>0`)
+
 ## Blog Posts Created
 1. ai-project-observability-otel-phoenix.html (NEW - May 2, 2026)
 2. llama-update.html (Apr 6, 2026)
