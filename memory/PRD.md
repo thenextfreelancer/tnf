@@ -41,6 +41,11 @@ Build a production-ready static website for "TheNextFreelancer" brand. Fast, SEO
   - Active state styling via `.tool-filter-btn.is-active`
 - CSP hardening: added `static.cloudflareinsights.com` to `script-src` so Cloudflare Pages auto-injected analytics beacon loads without CSP violations
 - Verified homepage thumbnails load correctly (Unsplash images, all `naturalWidth>0`)
+- Published new flagship post: **Freelancing 101 in 2026: The AI-Powered Playbook for Every Experience Level** (`/blogs/freelancing-101-ai-powered-2026.html`)
+  - 2400 words, 11-min read, niche-agnostic AI freelancing guide for beginner/intermediate/senior tiers
+  - Curated from Razorpay freelancing references + 2026 AI news (Llama 4, Claude Sonnet 4.5, GPT-5.2, Gemini 3 Pro, Nano Banana, Sora 2)
+  - Featured Unsplash hero (workspace/laptop/notebook) — symbolic, on-brand
+  - Updated `index.json` (totalPosts 8), `sitemap.xml`, `feed.xml`, blog list `<noscript>`, homepage Latest Articles section
 
 ## Blog Posts Created
 1. ai-project-observability-otel-phoenix.html (NEW - May 2, 2026)
